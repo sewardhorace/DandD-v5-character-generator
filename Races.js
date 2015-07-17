@@ -5,6 +5,7 @@ _.extend(Races, {
   genus: {
     dwarf: {
       name: "Dwarf",
+      characterNames: Names.dwarf,
       mods: {
         "con" : 2
       },
@@ -25,6 +26,7 @@ _.extend(Races, {
   species: {
     hillDwarf: {
       name: "Hill Dwarf",
+      characterNames: Races.genus.dwarf.characterNames,
       mods: Races.genus.dwarf.mods,
       age: Races.genus.dwarf.age,
       stature: {
@@ -42,6 +44,7 @@ _.extend(Races, {
     },
     mountainDwarf: {
       name: "Mountain Dwarf",
+      characterNames: Races.genus.dwarf.characterNames,
       mods: _.extend(Races.genus.dwarf.mods, {"str" : 2}),
       age: Races.genus.dwarf.age,
       stature: {

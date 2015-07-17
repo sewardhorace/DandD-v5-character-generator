@@ -26,8 +26,17 @@ var Utilities = {
     return temp;
   },
 
-  getRandom: function(arr) {
+  getRandomFromArray: function(arr) {
+    if (!arr) {
+      return undefined;
+    }
     var idx = Math.floor(Math.random() * arr.length);
     return arr[idx];
+  },
+
+  getRandomKey: function(dict) {
+    var keys = Object.keys(dict);
+    var idx = Math.floor(Math.random() * keys.length);
+    return keys[idx];
   }
 }

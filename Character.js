@@ -53,7 +53,7 @@ Character.prototype = {
 
   generateGender: function() {
     var genders = ["Male", "Female"];
-    return Utilities.getRandom(genders);
+    return Utilities.getRandomFromArray(genders);
   },
 
   generateRace: function() {
@@ -74,6 +74,24 @@ Character.prototype = {
 
   generateName: function() {
     // dependant on race
+    //need optional "nickname" for elvish "child names", "clan" for human ethnicities
+    var genderKey = this.gender.toLowerCase();
+    var nameOptions;
+    var firstName;
+    var lastName;
+    var nickname;
+    var name;
+
+    if (this.race.characterNames.clan) {
+      nameOptions = this.race.characterNames.clan[Utilities.getRandomKey(this.race.characterNames.clan)];
+    } else {
+      nameOptions = this.race.characterNames;
+    }
+    firstName = Utilities.getRandomFromArray(nameOptions.firstNames[genderKey]);
+    nickname = Utilities.getRandomFromArray(nameOptions.nicknames) || "";
+    lastName = Utilities.getRandomFromArray(nameOptions.lastNames);
+    name = firstName + " " + nickname + " " + lastName;
+    return name;
   },
 
   generateAge: function() {
