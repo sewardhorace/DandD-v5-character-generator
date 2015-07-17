@@ -11,11 +11,10 @@ function Character() {
 
   //need race
   this.name = this.generateName();
-  this.size = 0;
-  this.age = 0;
+  this.age = this.generateAge();
+  this.stature = ""
+  this.size = this.generateSize();
   this.speed = 30;
-  this.height = "";
-  this.weight = "";
 
   //need class
   this.hp = 1;
@@ -39,18 +38,16 @@ function Character() {
   //need skills
   this.passive_wisdom = 10;
 
-  //need equipment
+  //need equipment and proficiencies
   this.attack_and_spells = [];
+  this.ac = 10;
 
 }
 
 Character.prototype = {
-  generateName: function() {
-    // dependant on race
-  },
 
-  generateClass: function() {
-
+  generateAbilities: function() {
+    return Abilities.rollAbilities();
   },
 
   generateRace: function() {
@@ -61,11 +58,27 @@ Character.prototype = {
     return race;
   },
 
+  generateClass: function() {
+
+  },
+
   generateBackground: function() {
 
   },
 
-  generateAbilities: function() {
-    return Abilities.rollAbilities();
+  generateName: function() {
+    // dependant on race
+  },
+
+  generateAge: function() {
+    return this.race.age.baseAge + Utilities.rollDice(this.race.age.ageMod.numberDice, this.race.age.ageMod.numberSides);
+  },
+
+  generateSize: function() {
+    if (this.race.size) {
+      return this.race.size;
+    } else {
+      return "Medium";
+    }
   }
 }
