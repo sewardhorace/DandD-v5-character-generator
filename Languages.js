@@ -1,0 +1,18 @@
+var Languages = {
+  common: { name: "Common"},
+  dwarvish: { name: "Dwarvish"},
+  elvish: { name: "Elvish"},
+  giant: { name: "Giant"},
+  gnomish: { name: "Gnomish"},
+  goblin: { name: "Goblin"},
+  halfling: { name: "Halfling"},
+  orc: { name: "Orc"},
+  abyssal: { name: "Abyssal"},
+  celestial: { name: "Celestial"},
+  draconic: { name: "Draconic"},
+  deep_speech: { name: "Deep Speech"},
+  infernal: { name: "Infernal"},
+  primordial: { name: "Primordial"},
+  sylvan: { name: "Sylvan"},
+  undercommon: { name: "Undercommon"},
+};
