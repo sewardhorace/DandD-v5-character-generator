@@ -23,7 +23,10 @@ var Utilities = {
             delete obj['isActiveClone'];
         }
       }
-
     return temp;
+  },
+
+  getRandom: function(arr) {
+    var idx = Math.random() * arr.length;
   }
 }

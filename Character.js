@@ -12,7 +12,7 @@ function Character() {
   //need race
   this.name = this.generateName();
   this.age = this.generateAge();
-  this.stature = ""
+  this.stature = this.generateStature();
   this.size = this.generateSize();
   this.speed = 30;
 
@@ -71,7 +71,21 @@ Character.prototype = {
   },
 
   generateAge: function() {
-    return this.race.age.baseAge + Utilities.rollDice(this.race.age.ageMod.numberDice, this.race.age.ageMod.numberSides);
+    var baseAge = this.race.age.baseAge;
+    var ageMod = this.race.age.ageMod;
+    return baseAge + Utilities.rollDice(ageMod.numberDice, ageMod.numberSides);
+  },
+
+  generateStature: function() {
+    var stature = {};
+    var baseHeight = this.race.stature.baseHeight;
+    var heightMod = this.race.stature.heightMod;
+    var baseWeight = this.race.stature.baseWeight;
+    var weightMod = this.race.stature.weightMod;
+    var statureMod = Utilities.rollDice(heightMod.numberDice, heightMod.numberSide);
+    stature.height = baseHeight + statureMod;
+    stature.weight = baseWeight + Utilities.rollDice(weightMod.numberDice, weightMod.numberSides) * statureMod;
+    return stature;
   },
 
   generateSize: function() {
