@@ -4,6 +4,7 @@ function Character() {
 
   this.proficiencyBonus = 2;
   this.abilities = this.generateAbilities();
+  this.gender = this.generateGender();
 
   this.race = this.generateRace(), //race modifies ability scores;
   this.klass = this.generateClass();
@@ -48,6 +49,11 @@ Character.prototype = {
 
   generateAbilities: function() {
     return Abilities.rollAbilities();
+  },
+
+  generateGender: function() {
+    var genders = ["Male", "Female"];
+    return Utilities.getRandom(genders);
   },
 
   generateRace: function() {

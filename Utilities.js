@@ -27,6 +27,7 @@ var Utilities = {
   },
 
   getRandom: function(arr) {
-    var idx = Math.random() * arr.length;
+    var idx = Math.floor(Math.random() * arr.length);
+    return arr[idx];
   }
 }
