@@ -35,7 +35,7 @@ var Abilities = {
   },
 
   //rolls 4d6 and subtracts the lowest result
-  rollSingleAbility: function() {
+  generateSingleAbility: function() {
     var rolls = [];
     var total = 0;
     for (var i = 0; i < 4; i++) {
@@ -57,7 +57,7 @@ var Abilities = {
       var key = keys[idx];
       abilities[key] = {};
       abilities[key].name = Abilities.all[key].name;
-      abilities[key].score = Abilities.rollSingleAbility();
+      abilities[key].score = Abilities.generateSingleAbility();
     }
     return abilities;
   },

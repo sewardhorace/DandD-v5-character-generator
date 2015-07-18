@@ -6,7 +6,6 @@ var Races = {}
 _.extend(Races, {
   genus: {
     dwarf: {
-      name: "Dwarf",
       characterNames: Names.dwarf,
       mods: {
         "con" : 2
@@ -22,7 +21,6 @@ _.extend(Races, {
 
     },
     elf: {
-      name: "Elf",
       characterNames: Names.elf,
       mods: {
         "dex" : 2
@@ -36,7 +34,6 @@ _.extend(Races, {
       }
     },
     halfling: {
-      name: "Halfling",
       characterNames: Names.halfling,
       mods: {
         "dex" : 2
