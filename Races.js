@@ -17,7 +17,8 @@ _.extend(Races, {
           numberDice: 3,
           numberSides: 14
         }
-      }
+      },
+      speed: 25,
 
     },
     elf: {
@@ -69,10 +70,11 @@ _.extend(Races, {
 _.extend(Races, {
   species: {
     //dwarves
+
     hillDwarf: {
       name: "Hill Dwarf",
       characterNames: Races.genus.dwarf.characterNames,
-      mods: _.extend(Races.genus.dwarf.mods, {"wis" : 1}),
+      mods: _.extend(Utilities.deepClone(Races.genus.dwarf.mods), {"wis" : 1}),
       age: Races.genus.dwarf.age,
       build: {
         baseHeight: 44,
@@ -85,12 +87,13 @@ _.extend(Races, {
           numberDice: 2,
           numberSides: 6
         }
-      }
+      },
+      speed: Races.genus.dwarf.speed,
     },
     mountainDwarf: {
       name: "Mountain Dwarf",
       characterNames: Races.genus.dwarf.characterNames,
-      mods: _.extend(Races.genus.dwarf.mods, {"str" : 2}),
+      mods: _.extend(Utilities.deepClone(Races.genus.dwarf.mods), {"str" : 2}),
       age: Races.genus.dwarf.age,
       build: {
         baseHeight: 48,
@@ -103,13 +106,15 @@ _.extend(Races, {
           numberDice: 2,
           numberSides: 6
         }
-      }
+      },
+      speed: Races.genus.dwarf.speed,
     },
     // //elves
     highElf: {
       name: "High Elf",
+      genus: Races.genus.elf,
       characterNames: Races.genus.elf.characterNames,
-      mods: _.extend(Races.genus.elf.mods, {"int" : 1}),
+      mods: _.extend(Utilities.deepClone(Races.genus.elf.mods), {"int" : 1}),
       age: Races.genus.elf.age,
       build: {
         baseHeight: 54,
@@ -124,10 +129,11 @@ _.extend(Races, {
         }
       }
     },
+
     woodElf: {
       name: "Wood Elf",
       characterNames: Races.genus.elf.characterNames,
-      mods: _.extend(Races.genus.elf.mods, {"wis" : 1}),
+      mods: _.extend(Utilities.deepClone(Races.genus.elf.mods), {"wis" : 1}),
       age: Races.genus.elf.age,
       build: {
         baseHeight: 54,
@@ -140,12 +146,14 @@ _.extend(Races, {
           numberDice: 1,
           numberSides: 4
         }
-      }
+      },
+      speed: 35,
     },
+
     darkElf: {
       name: "Drow",
       characterNames: Races.genus.elf.characterNames,
-      mods: _.extend(Races.genus.elf.mods, {"cha" : 1}),
+      mods: _.extend(Utilities.deepClone(Races.genus.elf.mods), {"cha" : 1}),
       age: Races.genus.elf.age,
       build: {
         baseHeight: 53,
@@ -159,10 +167,10 @@ _.extend(Races, {
           numberSides: 6
         }
       }
-    },
+    }
 
     //halflings
-    
+
 
     // half_elf: {
     //   name: "Half Elf",

@@ -50,7 +50,7 @@ var Abilities = {
   },
 
   //returns an array of six ability scores
-  rollAbilities: function(){
+  generateAbilities: function(){
     var abilities = {};
     var keys = Object.keys(Abilities.all);
     for (idx in keys) {

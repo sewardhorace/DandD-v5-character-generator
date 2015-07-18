@@ -15,7 +15,7 @@ function Character() {
   this.age = this.generateAge();
   this.build = this.generatebuild();
   this.size = this.generateSize();
-  this.speed = 30;
+  this.speed = this.generateSpeed();
 
   //need class
   this.hp = 1;
@@ -23,24 +23,21 @@ function Character() {
   this.spells = [];
 
   //need background
-  this.personality_traits = [];
-  this.ideals = [];
-  this.bonds = [];
-  this.flaws = [];
+  this.character_traits = {};//personality traits, ideals, bonds, flaws
 
   //need background & class
-  this.equipment = []
+  this.equipment = {}; //weapons, armor, gp, tools, other
 
   //background, race, & class
   this.skills = [];
-  this.proficiencies = [];
+  this.proficiencies = {}; //weapon, armor, tool, languages
   this.features_traits =[];
 
   //need skills
-  this.passive_wisdom = 10;
+  this.passive_perception = 10;  //= 10 + perception skill
 
   //need equipment and proficiencies
-  this.attack_and_spells = [];
+  this.attack_and_spells = {}; // 66 (weapon), attack bonus, damage
   this.ac = 10;
 
 }
@@ -48,12 +45,12 @@ function Character() {
 Character.prototype = {
 
   generateAbilities: function() {
-    return Abilities.rollAbilities();
+    return Abilities.generateAbilities();
   },
 
   generateGender: function() {
     var genders = ["Male", "Female"];
-    return Utilities.getRandomFromArray(genders);
+    return Utilities.randomItem(genders);
   },
 
   generateRace: function() {
@@ -75,23 +72,16 @@ Character.prototype = {
   generateName: function() {
     // dependant on race
     //need optional "nickname" for elvish "child names", "clan" for human ethnicities
-    var genderKey = this.gender.toLowerCase();
-    var nameOptions;
-    var firstName;
-    var lastName;
-    var nickname;
-    var name;
 
-    if (this.race.characterNames.clan) {
-      nameOptions = this.race.characterNames.clan[Utilities.getRandomKey(this.race.characterNames.clan)];
-    } else {
-      nameOptions = this.race.characterNames;
-    }
-    firstName = Utilities.getRandomFromArray(nameOptions.firstNames[genderKey]);
-    nickname = Utilities.getRandomFromArray(nameOptions.nicknames) || "";
-    lastName = Utilities.getRandomFromArray(nameOptions.lastNames);
-    name = firstName + " " + nickname + " " + lastName;
-    return name;
+    var characterNames = this.race.characterNames;
+    var clan = characterNames.clan;
+    var nameOptions  = clan ? clan[Utilities.randomItem(Object.keys(clan))] : characterNames;
+    var nameParts = [
+      Utilities.randomItem(nameOptions.firstNames[this.gender.toLowerCase()]),
+      Utilities.randomItem(nameOptions.nicknames) || "",
+      Utilities.randomItem(nameOptions.lastNames) || ""
+    ];
+    return nameParts.join(' ');
   },
 
   generateAge: function() {
@@ -113,10 +103,10 @@ Character.prototype = {
   },
 
   generateSize: function() {
-    if (this.race.size) {
-      return this.race.size;
-    } else {
-      return "Medium";
-    }
+    return this.race.size ? this.race.size : "Medium";
+  },
+
+  generateSpeed: function() {
+    return this.race.speed ? this.race.speed : 30;
   }
 }
