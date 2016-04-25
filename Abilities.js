@@ -34,21 +34,6 @@ var Abilities = {
     }
   },
 
-  //rolls 4d6 and subtracts the lowest result
-  generateSingleAbility: function() {
-    var rolls = [];
-    var total = 0;
-    for (var i = 0; i < 4; i++) {
-      rolls.push(Utilities.rollDice());
-    }
-    rolls.sort();
-    rolls.shift();
-    for (var i = 0; i < 3; i++) {
-      total += rolls[i];
-    }
-    return total;
-  },
-
   //returns an array of six ability scores
   generateAbilities: function(){
     var abilities = {};
@@ -71,12 +56,10 @@ var Abilities = {
     return modifiers;
   },
 
-  randomMod: function(modKeys) {
-    if (typeof(modKeys) != "undefined" && modKeys.length != Object.keys(Abilities.all).length) {
-      var keys = Object.keys(Abilities.all);
+  randomAbility: function(scores) {
+    if (typeof(scores) != "undefined" && scores.length = Object.keys(Abilities.all).length) {
       while (true) {
         var idx = Math.floor(Math.random() * keys.length);
-        var key = keys[idx];
         if (modKeys.indexOf(key) == -1) {
           return key;
         }

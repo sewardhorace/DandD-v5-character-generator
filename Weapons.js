@@ -56,7 +56,7 @@ var Weapons = {
         name: "Light crossbow",
         damage: "1d8",
         properties: ["loading", "two-handed"],
-        ammunition: "Crossbow bolts"
+        ammunition: Adventuring_gear.ammunition.crossbow_bolts
       },
       dart: {
         name: "Dart",
@@ -67,12 +67,12 @@ var Weapons = {
         name: "Shortbow",
         damage: "1d6",
         properties: ["two-handed"],
-        ammunition: "Arrows"
+        ammunition: Adventuring_gear.ammunition.arrows
       },
       sling: {
         name: "Sling",
         damage: "1d4",
-        ammunition: "Sling bullets"
+        ammunition: Adventuring_gear.ammunition.sling_bullets
       }
     }
   },
@@ -171,25 +171,25 @@ var Weapons = {
         name: "Blowgun",
         damage: "1",
         properties: ["loading"],
-        ammunition: "Blowgun needles"
+        ammunition: Adventuring_gear.ammunition.blowgun_needles
       },
       handCrossbow: {
         name: "Hand crossbow",
         damage: "1d6",
         properties: ["light", "loading"],
-        ammunition: "Crossbow bolts"
+        ammunition: Adventuring_gear.ammunition.crossbow_bolts
       },
       heavyCrossbow: {
         name: "Heavy crossbow",
         damage: "1d10",
         properties: ["heavy", "loading", "two-handed"],
-        ammunition: "Crossbow bolts"
+        ammunition: Adventuring_gear.ammunition.crossbow_bolts
       },
       longbow: {
         name: "Longbow",
         damage: "1d8",
         properties: ["heavy", "two-handed"],
-        ammunition: "Arrows"
+        ammunition: Adventuring_gear.ammunition.arrows
       },
       net: {
         name: "Net",
